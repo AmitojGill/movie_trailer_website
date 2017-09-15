@@ -1,9 +1,4 @@
-import webbrowser
-import os
-import re
 
-# Styles and scripting for the page
-main_page_head = '''
 <head>
     <meta charset="utf-8">
     <title>Fresh Tomatoes!</title>
@@ -80,10 +75,7 @@ main_page_head = '''
         });
     </script>
 </head>
-'''
 
-# The main page layout and title bar
-main_page_content = '''
 <!DOCTYPE html>
 <html lang="en">
   <body>
@@ -111,62 +103,49 @@ main_page_content = '''
       </div>
     </div>
     <div class="container">
-      {movie_tiles}
+      
+  <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="GIQMnSpspx0" data-toggle="modal" data-target="#trailer">
+      <img src="https://upload.wikimedia.org/wikipedia/en/3/34/Kong_Skull_Island_poster.jpg" width="220" height="342">
+      <h2>Skull Island</h2>
+      <h4>PG-13</h4>
+      <p>Scientists, soldiers and adventurers unite to explore a mythical, uncharted island in the Pacific Ocean.</p>
+  </div>
+
+  <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="GGol29RlI3k" data-toggle="modal" data-target="#trailer">
+      <img src="https://upload.wikimedia.org/wikipedia/en/d/d7/War_for_the_Planet_of_the_Apes_poster.jpg" width="220" height="342">
+      <h2>War for the Planet of the Apes</h2>
+      <h4>PG-13</h4>
+      <p>Caesar (Andy Serkis) and his apes are forced into a deadly conflict with an army of humans led by a ruthless colonel (Woody Harrelson).</p>
+  </div>
+
+  <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="Dadu2KLjMVM" data-toggle="modal" data-target="#trailer">
+      <img src="https://upload.wikimedia.org/wikipedia/en/2/26/Moana_Teaser_Poster.jpg" width="220" height="342">
+      <h2>Moana</h2>
+      <h4>PG</h4>
+      <p>In Ancient Polynesia, when a terrible curse incurred by the Demigod Maui reaches Moana's island, she answers the Ocean's call to seek out the Demigod to set things right.</p>
+  </div>
+
+  <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="zqyaLkYEDhU" data-toggle="modal" data-target="#trailer">
+      <img src="https://upload.wikimedia.org/wikipedia/en/e/ec/Magnificent_Seven_2016.jpg" width="220" height="342">
+      <h2>The Magnificent Seven</h2>
+      <h4>PG-13</h4>
+      <p>Seven gunmen in the old west gradually come together to help a poor village against savage thieves.</p>
+  </div>
+
+  <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="1deLLCy73Qc" data-toggle="modal" data-target="#trailer">
+      <img src="https://upload.wikimedia.org/wikipedia/en/5/53/Captain_America_Civil_War_poster.jpg" width="220" height="342">
+      <h2>Captain America: Civil War</h2>
+      <h4>PG-13</h4>
+      <p>Captain America: Civil War is a 2016 American superhero film based on the Marvel Comics character Captain America, produced by Marvel Studios and distributed by Walt Disney Studios Motion Pictures.</p>
+  </div>
+
+  <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="x_7YlGv9u1g" data-toggle="modal" data-target="#trailer">
+      <img src="https://upload.wikimedia.org/wikipedia/en/9/99/Dangal_Poster.jpg" width="220" height="342">
+      <h2>Dangal</h2>
+      <h4>PG-13</h4>
+      <p>Former wrestler Mahavir Singh Phogat (Aamir Khan) trains young daughters Geeta (Fatima Sana Shaikh) and Babita (Sanya Malhotra) to follow in his footsteps and become world-class grapplers.</p>
+  </div>
+
     </div>
   </body>
 </html>
-'''
-
-# A single movie entry html template
-movie_tile_content = '''
-  <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
-      <img src="{poster_image_url}" width="220" height="342">
-      <h2>{movie_title}</h2>
-      <h4>{movie_rating}</h4>
-      <p>{movie_storyline}</p>
-  </div>
-'''
-
-def create_movie_tiles_content(movies):
-    # The HTML content for this section of the page
-    content = ''
-    for movie in movies:
-        # Extract the youtube ID from the url
-        youtube_id_match = re.search(r'(?<=v=)[^&#]+', movie.trailer_youtube_url)
-        youtube_id_match = youtube_id_match or re.search(r'(?<=be/)[^&#]+', movie.trailer_youtube_url)
-        trailer_youtube_id = youtube_id_match.group(0) if youtube_id_match else None
-
-
-        # Append the tile for the movie with its content filled in
-        content += movie_tile_content.format(
-            movie_title=movie.title,
-            poster_image_url=movie.poster_image_url,
-            trailer_youtube_id=trailer_youtube_id,
-            movie_storyline = movie.storyline,
-            movie_rating = movie.rating
-
-        )
-    
-    return content
-
-def open_movies_page(movies):
-  # Create or overwrite the output file
-  output_file = open('fresh_tomatoes.html', 'w')
-
-  # Replace the placeholder for the movie tiles with the actual dynamically generated content
-  rendered_content = main_page_content.format(movie_tiles=create_movie_tiles_content(movies))
-
-  # Output the file
-  output_file.write(main_page_head + rendered_content)
-  output_file.close()
-
-  # open the output file in the browser
-  url = os.path.abspath(output_file.name)
-  webbrowser.open('file://' + url, new=2) # open in a new tab, if possible
-
-
-
-
-
-
-  
