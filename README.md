@@ -20,6 +20,7 @@ Content of website is taken form Wikipedia and Youtube.
 * Make sure you have Python2.7 installed
 * clone this repository - https://github.com/AmitojGill/movie_trailer_website.git
 * To add your favorite movies open entertainment_center.py in Sublime Text
+
 ** Create a new instance for each movie you wish to add as example below:
 ```
 '''avatar: movie title, storyline, poster image and movie trailer.'''
