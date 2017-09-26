@@ -17,10 +17,10 @@ Content of website is taken form Wikipedia and Youtube.
 - media.py
 
 ### **Follow These steps**
-1 Make sure you have Python2.7 installed
-2 clone this repository - https://github.com/AmitojGill/movie_trailer_website.git
-3 To add your favorite movies open entertainment_center.py in Sublime Text
-4 Create a new instance for each movie you wish to add as example below:
+1. Make sure you have Python2.7 installed
+2. clone this repository - https://github.com/AmitojGill/movie_trailer_website.git
+3. To add your favorite movies open entertainment_center.py in Sublime Text
+4. Create a new instance for each movie you wish to add as example below:
 ```
 '''avatar: movie title, storyline, poster image and movie trailer.'''
 avatar = media.Movie(
@@ -31,7 +31,7 @@ avatar = media.Movie(
     "PG-13"
     )
 ```
-5 Next add your newlly created movies to the movies list
+5. Next add your newlly created movies to the movies list
 ```
 movies = [
     skull_island,
@@ -42,9 +42,9 @@ movies = [
     dangal]
 
 ```
-6 To change layout and any html/css code edit fresh_tomatoes.py
-7 If you want to add more content per movie, you will need to change all three files (entertainment_center.py, media.py, and fresh_tomatoes.py).
-8 To generate html file, run the entertainment_center.py file.
+6. To change layout and any html/css code edit fresh_tomatoes.py
+7. If you want to add more content per movie, you will need to change all three files (entertainment_center.py, media.py, and fresh_tomatoes.py).
+8. To generate html file, run the entertainment_center.py file.
 
 **Good Luck!**
 
